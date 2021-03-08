@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends $TOOL_DEPS $BUI
  && php $TOOLBOX_TARGET_DIR/toolbox install \
  && rm -rf $COMPOSER_HOME/cache \
  && apt-get purge -y --auto-remove $BUILD_DEPS
+ && docker-php-ext-install gd
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
